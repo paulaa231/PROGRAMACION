@@ -1,0 +1,100 @@
+import java.util.Scanner;
+
+/*Paula Vargas Miranda
+ * 14/ 10 / 25
+ * practica 4 */
+
+public class Multiplicacion {
+
+    public static void main(String[] args) {
+
+        int num1=0,num2=0,resultado=0;
+        Scanner entrada = new Scanner(System.in);
+
+//Aquí utilizo el try-catch para detectar si el primer valor ya es erroneo
+
+        try {
+
+            System.out.println("introduce primer numero");
+            num2 = entrada.nextInt();
+
+
+        }catch (Exception err) {
+            System.out.println("Valores no validos");
+            System.out.println("INTRODUCE UN NÚMERO");
+            num2 = entrada.nextInt();
+
+        }
+        //Los ifs para controlar todas las condiciones
+
+            if (num2 <0 || num1 <0 ){
+
+                System.out.println("No se puede divisir entre negativos");
+            } else if (num2 ==0 || num1 == 0) {
+                System.out.println("División no valida, el resultado es 0");
+
+
+                //Aqui es donde me peta
+            } else if (num2 > 999 || num1 > 999) {
+                System.out.println("El número no puede superar los 3 dígitos");
+
+                System.out.println("introduce primer numero");
+                num2 = entrada.nextInt();
+
+                System.out.println("introduce segundo numero");
+                num1 = entrada.nextInt();
+            } else if (num2 < 99 || num1 < 99) {
+                System.out.println("Tinen que haber mínimo 3 dígitos");
+
+                System.out.println("introduce primer numero");
+                num2 = entrada.nextInt();
+
+                System.out.println("introduce segundo numero");
+                num1 = entrada.nextInt();
+            }
+
+
+            //El try del segundo valor
+        try {
+
+            System.out.println("introduce segundo numero");
+            num1 = entrada.nextInt();
+
+        }catch (Exception err){
+            System.out.println("Valores no validos");
+            System.out.println("INTRODUCE UN NÚMERO");
+            num1 = entrada.nextInt();
+        }
+
+//Aquí es la conversion de números y la operación.
+
+        resultado = num1 * num2;
+        System.out.println("El producto de la multiplicación es: " +(resultado));
+        System.out.println("El proceso es:");
+        System.out.println("   " +num2);
+        System.out.println("x  "+num1);
+        System.out.println("------");
+
+        String numA = Integer.toString(num1);
+        String numA_1 = numA.substring(2,3);
+        int num_1 = Integer.parseInt(numA_1);
+
+        System.out.println("   "+num_1 * num2);
+
+        String numB = Integer.toString(num1);
+        String numA_2 = numB.substring(1,2);
+        int num_2 = Integer.parseInt(numA_2);
+
+        System.out.println(" "+num_2 * num2+"x");
+
+        String numC = Integer.toString(num1);
+        String numA_3 = numC.substring(0,1);
+        int num_3 = Integer.parseInt(numA_3);
+
+        System.out.println(num_3 * num2+"xx");
+
+        System.out.println("--------");
+        System.out.println(resultado);
+
+    }
+}
