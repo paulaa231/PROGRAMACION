@@ -1,0 +1,72 @@
+import java.util.Scanner;
+
+public class NumeroSuerte {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.println("Intoduce tu fecha de naciemiento (dd/mm/aaaa):");
+        String fecha = teclado.next();
+
+//aseguro que no se puedan introducir mas de 10 digitos
+    
+        int tamanyo_fecha = fecha.length();
+        if (tamanyo_fecha > 10){
+            System.out.println("No has inreoducido la fecha en el formato correcto");
+            return;
+        }
+
+//Aqui transformo el string en int y lo separo por dia(num_1), mes(num_2) , año(num_3) y luego los muestro.
+
+        String primer_num = fecha.substring(0,2);
+        int num_1 = Integer.parseInt(primer_num);
+
+        System.out.println(num_1);
+
+        String segund_num = fecha.substring(3,5);
+        int num_2 = Integer.parseInt(segund_num);
+
+        System.out.println(num_2);
+
+        String tercer_num = fecha.substring(6,10);
+        int num_3 = Integer.parseInt(tercer_num);
+
+        System.out.println(num_3);
+
+//Aqui controlo que ni el dia ni el mes ni el año puedan ser menores o iguales que 0.
+
+        if (num_1 <=0 || num_2 <=0|| num_3 <=0){
+            System.out.println("Valores introducidos no correctos");
+            return;
+
+        }
+
+//Aqui los sumo todos para luego separar ese número por dígitos.
+
+        int num_resultado = num_1 + num_2 + num_3;
+        System.out.println(num_resultado);
+
+        System.out.println(num_1+" + "+num_2+" + "+num_3+" = "+ num_resultado);
+
+        String num_suerte = Integer.toString(num_resultado);
+
+        String prim_dig = num_suerte.substring(0,1);
+        int dig1 = Integer.parseInt(prim_dig);
+
+        String seg_dig = num_suerte.substring(1,2);
+        int dig2 = Integer.parseInt(seg_dig);
+
+        String ter_dig = num_suerte.substring(2,3);
+        int dig3 = Integer.parseInt(ter_dig);
+
+        String cuar_dig = num_suerte.substring(3,4);
+        int dig4 = Integer.parseInt(cuar_dig);
+        
+//Aqui ya con cada dígito separado los sumo todos y los muestro para enseñar el numero de la suerte.
+
+        int num_def_suert = dig1+dig2+dig3+dig4;
+        System.out.println(dig1+" + "+dig2+" + "+dig3+" + "+dig4+" = "+ num_def_suert);
+        System.out.println("Tu número de la suerte es: " +num_def_suert);
+    }
+}
