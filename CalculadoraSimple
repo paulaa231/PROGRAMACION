@@ -1,0 +1,91 @@
+import java.util.Scanner;
+
+
+
+public class CalculadoraSimple {
+    public static void main(String[] args) {
+
+        //introduzco un valor double para las operaciones con decimales.
+
+        double resultado = 0;
+        Scanner teclado = new Scanner(System.in);
+
+        //meto el try para capturar ya cualquier ingreso de valores que no me guste.
+
+
+        try {
+            System.out.println("¡¡ BIENVENIDOOO A LA CALCULADORA SIMPLEEE !!");
+            System.out.println("Introduce tu primer número: ");
+
+            double num1 = teclado.nextDouble();
+            double num2 = 0;
+
+
+            System.out.println("Introduce signo de operación: ");
+            System.out.println("[+] -- >  suma");
+            System.out.println("[-] -- >  resta");
+            System.out.println("[x] -- >  multiplicación");
+            System.out.println("[/] -- >  división");
+            System.out.println("[R] -- >  raíz cuadrada");
+
+            //uso la función toUpper para si me introducen la ´x´ o ´r´ ya sea en mayusculas o minusculas me lo detecte igual.
+            //Tambien aquí hago ya excepción de la raiz introduciendola en un if para que no me metan valores de 0 o negativos.
+            //Luego en el else uso la funcion math.sqrt para calcular la raíz y lo imprimo.
+
+            String signo = teclado.next().toUpperCase();
+            if (signo.equals("R")) {
+                if (num1 <= 0) {
+                    System.out.println("Error: no se puede calcular la raíz cuadrada de un número negativo.");
+                } else {
+                    resultado = Math.sqrt(num1);
+                    System.out.println("El resultado de la raíz cuadrada de " + num1 + " es: " + resultado);
+                }
+                return;
+            }
+
+            //Introduzco el segundo valor para las otras funciones.
+
+            System.out.println("Introduzca el segundo número");
+            num2 = teclado.nextDouble();
+            switch (signo) {
+                case "+":
+                    resultado = num1 + num2;
+                    System.out.println("El resultado de la suma es: " + resultado);
+                    break;
+
+                case "-":
+                    resultado = num1 - num2;
+                    System.out.println("El resultado de la resta es: " + resultado);
+                    break;
+
+                case "X":
+                    resultado = num1 * num2;
+                    System.out.println("El resultado de la multiplicación es: " + resultado);
+                    break;
+
+                    //En el cso de dividir hago un if para que el denominador no pueda ser 0 o negativos.
+
+                case "/":
+                    if (num2 <= 0) {
+                        System.out.println("Error: no se puede dividir entre cero ni números negativos.");
+                    } else {
+                        resultado = num1 / num2;
+                        System.out.println("El resultado de la división es: " + resultado);
+                    }
+                    break;
+
+                    //El defaul para cualquier ingreso no valido.
+
+                default:
+                    System.out.println("Operación no válida. Intenta de nuevo.");
+
+        //y el catch por si me introducen letras en vez de numeros y demas...
+
+            }
+        }catch (Exception e){
+            System.out.println("Ocurrió un error inesperado");
+        }
+
+
+    }
+}
