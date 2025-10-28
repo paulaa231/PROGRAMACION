@@ -1,0 +1,162 @@
+import java.util.Scanner;
+
+public class ISBN2 {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.println("-----MENÚ ISBN:-----");
+        System.out.println("");
+        System.out.println("---------------------");
+        System.out.println("[1] --> Validar ISBN");
+        System.out.println("[2] --> Reparar ISBN");
+        System.out.println("[X] --> SALIR");
+        System.out.println("---------------------");
+        System.out.println("");
+        System.out.println("Introduce tu opción:");
+
+        String boton = teclado.next().toUpperCase();
+
+        switch (boton) {
+
+            case "1":
+                System.out.println("--------------------------------");
+                System.out.println("INTRODUZCA ISBN PARA VALIDARLO:");
+                System.out.println("--------------------------------");
+                String isbn = teclado.next().toUpperCase(); // Convertir a mayúsculas para detectar 'X'
+                int tamanyo_isbn = isbn.length();   //Definimos variable tamaño para contar cuantas cifras tiene.
+
+
+                if (tamanyo_isbn != 10) {   //Contolamos la excepcion por si en menos o mayor que 10
+                    System.out.println("ERROR: El ISBN debe tener exactamente 10 caracteres.");
+                    break;
+                }
+
+                // Extraemos cada caracter
+                String letra1 = isbn.substring(0, 1);
+                String letra2 = isbn.substring(1, 2);
+                String letra3 = isbn.substring(2, 3);
+                String letra4 = isbn.substring(3, 4);
+                String letra5 = isbn.substring(4, 5);
+                String letra6 = isbn.substring(5, 6);
+                String letra7 = isbn.substring(6, 7);
+                String letra8 = isbn.substring(7, 8);
+                String letra9 = isbn.substring(8, 9);
+                String letra10 = isbn.substring(9, 10);
+
+                try {
+                    int n1 = Integer.parseInt(letra1);
+                    int n2 = Integer.parseInt(letra2);
+                    int n3 = Integer.parseInt(letra3);
+                    int n4 = Integer.parseInt(letra4);
+                    int n5 = Integer.parseInt(letra5);
+                    int n6 = Integer.parseInt(letra6);
+                    int n7 = Integer.parseInt(letra7);
+                    int n8 = Integer.parseInt(letra8);
+                    int n9 = Integer.parseInt(letra9);
+                    int n10;
+
+                    // Si el ultimo carácter es 'X' vale 10
+                    if (letra10.equals("X")) {
+                        n10 = 10;
+                    } else {
+                        n10 = Integer.parseInt(letra10);
+                    }
+
+                    int suma_isbn = n1 * 10 + n2 * 9 + n3 * 8 + n4 * 7 + n5 * 6 + n6 * 5 + n7 * 4 + n8 * 3 + n9 * 2 + n10 * 1;
+
+
+                    if (suma_isbn % 11 == 0) {  //Calculo para saber si es multiplo de 11
+                        System.out.println("Su ISBN es correcto.");
+                    } else {
+                        System.out.println("Su ISBN NO es correcto.");
+                    }
+
+                } catch (NumberFormatException e) {
+                    System.out.println("ERROR: El ISBN contiene caracteres no válidos (solo números o una 'X' final).");
+                }
+
+                break;
+
+            case "2":
+
+
+
+                System.out.println("--------------------------------");
+                System.out.println("Segunda opción (reparar ISBN).");
+                System.out.println("--------------------------------");
+                isbn = teclado.next().toUpperCase(); // Convertir a mayusculas para detectar 'X'
+                tamanyo_isbn = isbn.length();
+                if (tamanyo_isbn != 10) {
+                    System.out.println("ERROR: El ISBN debe tener exactamente 10 caracteres.");
+                }
+                int inter = isbn.indexOf('?');  //Definimos una variable que contenga '?' para localizarla.
+                if(inter <=0){  //Aqui entra si no detecta ningun valor con '?'.
+                    System.out.println("ERROR: ISBN no defectuoso");
+                }
+                int pos = isbn.indexOf('?');
+                if (pos == -1) {
+                    System.out.println("ERROR: No hay ningún '?' en el ISBN.");
+                    break;
+                }
+
+                boolean encontrado = false;
+
+                for (int posible = 0; posible <= 10; posible++) {        /* Este bucle hace si el '?' está
+                                                                         en la última posicion (posición 9)
+                                y el valor posible es 10, se sustituye por 'X' (ya que 'X' equivale a 10 en
+                             el ISBN). En cualquier otro caso, se sustituye '?' por un número del 0 al 9. */
+
+                    String candidato;
+
+                    //Si el valor posible es 10 y el ? esta en la ultima posicion  'X':
+                    if (posible == 10 && pos == 9) {
+                        candidato = isbn.substring(0, pos) + "X" + isbn.substring(pos + 1);
+                    } else if (posible < 10) {
+                        candidato = isbn.substring(0, pos) + posible + isbn.substring(pos + 1);
+                    } else {
+                        continue;
+                    }
+
+                    int suma = 0;
+                    boolean valido = true;
+                    for (int i = 0; i < 10; i++) {          //En este bucle es para ir probando numero
+                        char c = candidato.charAt(i);       // por numero (0-9) y multiplicandolo por la
+                                                            // posicion de '?' ya localizada. La variable
+                        int valor;                          // i se encarga de que el bucle se haga 10 veces
+                                                            //una por cada valor hasta encontrar ? y la variable
+                        if (c == 'X' && i == 9) {           // c es la que se va multiplicando hasta encontrar el
+                                                            //mutiplo de 11 y entre en el siguiente if.
+                            valor = 10;
+                        } else if (c >= '0' && c <= '9') {
+                            valor = c - '0';
+                        } else {
+                            valido = false;
+                            break;
+                        }
+
+                        suma += valor * (10 - i);
+                    }
+
+                    if (valido && suma % 11 == 0) {
+                        System.out.println("El ISBN correcto es: " + candidato);
+                        encontrado = true;
+                    }
+                }
+
+                if (!encontrado) {      //Estructura para controlar el programa.
+                    System.out.println("No se ha podido reparar el ISBN.");
+                }
+                
+            case "X":
+                System.out.println("Saliendo del programa...");
+                break;
+
+            default:        //Defaul por si en el menu el usuario pone cualquier valor no valido.
+                System.out.println("ERROR: Valor introducido no válido.");
+                break;
+        }
+
+    }
+}
