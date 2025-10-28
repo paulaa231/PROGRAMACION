@@ -1,0 +1,125 @@
+import java.util.Random;
+import java.util.Scanner;
+
+
+
+
+public class EjerciciosJava {
+
+    public static void main(String[] args) {
+
+
+
+
+            Random aleatorio = new Random();
+
+            int num1 = aleatorio.nextInt();
+            System.out.println(num1);
+
+            num1 = aleatorio.nextInt(899) + 100;
+            System.out.println(num1);
+
+            double num_dob = aleatorio.nextDouble() * 3 + 1;
+            System.out.println(num_dob);
+
+            double num_m = Math.random() * 3 + 1;
+            System.out.println(num_m);
+
+
+
+        //Ejercicio 1
+
+            Random al = new Random();
+
+            int dado1 = al.nextInt(6);
+            System.out.println("Dado1: " + dado1);
+
+            int dado2 = al.nextInt(6) + 1;
+            System.out.println("Dado2: " + dado2);
+
+            System.out.println("Suma: " + (dado1 + dado2));
+
+
+
+        //Ejercicio 2
+
+
+
+            String carac = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            int longitud = 10;
+
+            String contra = "";
+
+            int posic;
+
+            for (int i = 0; i < longitud; i++) {
+
+                posic = al.nextInt(carac.length());
+                contra += carac.charAt(posic);
+
+            }
+
+            System.out.println("La contraseña que se ha generado es: " + contra);
+
+
+
+        //Ejercicio 3
+
+
+            Scanner ent = new Scanner(System.in);
+
+            System.out.println("Dame un rango para tus números random");
+
+            int nummin = 0;
+            int nummax = 0;
+
+            do {
+                System.out.println("Introduce mínimo: ");
+                nummin = ent.nextInt();
+                System.out.println("Introduce máximo: ");
+                nummax = ent.nextInt();
+                System.out.println(" ");
+
+                if (nummax <= nummin) {
+                    System.out.println("Tu mínimo tiene que ser menor que tu máximo");
+                }
+
+            } while (nummax <= nummin);
+
+            System.out.println("Cuántos números quieres generar? ");
+            int gener = ent.nextInt();
+            System.out.println(" ");
+
+            for (int i = 1; i <= gener; i++) {
+
+                int numran = al.nextInt(nummax - nummin + 1) + nummin;
+                System.out.println(numran);
+
+            }
+
+
+        //Ejercicio 4
+
+
+
+            carac = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+             longitud = al.nextInt(3) + 6;
+
+             contra = "";
+
+
+            for (int i = 0; i < longitud; i++) {
+
+                posic = al.nextInt(carac.length());
+                contra += carac.charAt(posic);
+
+            }
+
+            System.out.println("La contraseña generada es: " + contra);
+
+
+    }
+}
+
