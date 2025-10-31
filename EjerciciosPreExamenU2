@@ -1,0 +1,289 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class EjerciciosPreExamenU2 {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+
+        /*
+
+        //Ejercicio 1
+
+        System.out.println("Introduce 5 numeros:");
+        int igual0=0;
+        int mayor0=0;
+        int menor0 =0;
+
+
+        for (int i=0;i<5;i++){
+
+            int num = teclado.nextInt();
+
+            if(num<0){
+                menor0++;
+
+            } else if (num>0) {
+                mayor0++;
+
+            }else{
+                igual0++;
+
+            }
+        }
+
+        System.out.println("mayores que 0: "+mayor0 );
+        System.out.println("menores que 0: "+menor0 );
+        System.out.println("iguales que 0: "+igual0 );
+
+        */
+
+
+        //Ejercicio2
+
+        /*
+        int resultado = 0 ;
+
+        System.out.println("Introduce la base");
+        int base = teclado.nextInt();
+
+        System.out.println("Introduce la potencia");
+        int pot = teclado.nextInt();
+
+        if (pot<=0){
+            System.out.println("ERROR: La potencia tiene que ser positica");
+        }
+        for (int i=0;i<=pot;i++){
+            resultado=pot*pot;
+
+        }
+
+        System.out.println("El resultado de la base "+base+" y potencia "+pot+" da como resultoado "+ resultado);
+
+
+         */
+
+
+        //Ejercicio 3
+
+    /*
+        int dinero=10;
+
+        for (int i=1;dinero<640;i++){
+         System.out.println("Mes "+(i)+" : "+dinero+" $");
+         dinero=dinero*2;
+
+
+        }
+
+        if (dinero==640){
+            dinero=dinero-10;
+            System.out.println("Total a pagar:  "+dinero+" $");
+
+        }
+
+    */
+
+
+        //Ejercicio 4
+
+
+        /*
+
+        System.out.print("Introduce una nota (0-10): ");
+        int nota = teclado.nextInt();
+
+        String resultado;
+
+        switch (nota) {
+            case 0, 1, 2, 3, 4 -> resultado = "INSUFICIENTE";
+            case 5 -> resultado = "SUFICIENTE";
+            case 6 -> resultado = "BIEN";
+            case 7, 8 -> resultado = "NOTABLE";
+            case 9, 10 -> resultado = "SOBRESALIENTE";
+            default -> resultado = "No válido";
+        }
+
+        System.out.println("Resultado: " + resultado);
+
+        */
+        /*
+            //Ejercicio5
+
+                double[] sueldos = new double[5];
+                double maximo = 0;
+                int contadorMasDeMil = 0;
+
+                for (int i = 0; i < sueldos.length; i++) {
+                    System.out.print("Introduce el sueldo " + (i + 1) + ": ");
+                    sueldos[i] = teclado.nextDouble();
+
+                    if (sueldos[i] > maximo) {
+                        maximo = sueldos[i];
+                    }
+
+                    if (sueldos[i] > 1000) {
+                        contadorMasDeMil++;
+                    }
+                }
+
+                System.out.println("El sueldo más alto es: " + maximo + " €");
+                System.out.println("Número de empleados que ganan más de 1000€: " + contadorMasDeMil);
+                sc.close();
+
+        */
+
+
+
+        //Ejercicio6
+        /*
+
+        System.out.print("Introduce el número de alumnos: ");
+        int n = teclado.nextInt();
+
+        int[] edades = new int[n];
+        double[] alturas = new double[n];
+
+        int mayores18 = 0;
+        int mas175 = 0;
+        double sumaEdades = 0;
+        double sumaAlturas = 0;
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Edad del alumno " + (i + 1) + ": ");
+            edades[i] = sc.nextInt();
+            System.out.print("Altura del alumno " + (i + 1) + " (en cm): ");
+            alturas[i] = sc.nextDouble();
+
+            sumaEdades += edades[i];
+            sumaAlturas += alturas[i];
+
+            if (edades[i] > 18) mayores18++;
+            if (alturas[i] > 175) mas175++;
+        }
+
+        System.out.println("\nEdad media: " + (sumaEdades / n));
+        System.out.println("Altura media: " + (sumaAlturas / n) + " cm");
+        System.out.println("Alumnos mayores de 18 años: " + mayores18);
+        System.out.println("Alumnos con más de 175 cm: " + mas175);
+        sc.close();
+
+        oto ojemplo del ej 6
+
+         System.out.print("Introduce el número de alumnos: ");
+        int n = teclado.nextInt();
+
+        int mayores18 = 0;
+        int mas175 = 0;
+        int sumaEdades = 0;
+        double sumaAlturas = 0;
+
+        for (int i = 1; i <= n; i++) {
+            System.out.println("\nAlumno " + i + ":");
+            System.out.print("Edad: ");
+            int edad = sc.nextInt();
+
+            System.out.print("Altura (en cm): ");
+            double altura = sc.nextDouble();
+
+            sumaEdades += edad;
+            sumaAlturas += altura;
+
+            if (edad > 18) {
+                mayores18++;
+            }
+            if (altura > 175) {
+                mas175++;
+            }
+        }
+
+        System.out.println("\n--- Resultados ---");
+        System.out.println("Edad media: " + (double) sumaEdades / n);
+        System.out.println("Altura media: " + (sumaAlturas / n) + " cm");
+        System.out.println("Alumnos mayores de 18 años: " + mayores18);
+        System.out.println("Alumnos con más de 175 cm: " + mas175);
+
+
+
+         */
+
+        //Ejercicio 7
+
+
+        /*
+        int n;
+
+        do {
+            System.out.print("Introduce un número entero positivo: ");
+            n = teclado.nextInt();
+            if (n <= 0) {
+                System.out.println("Número no válido. Intenta de nuevo.\n");
+            }
+        } while (n <= 0);
+
+        int a = 0, b = 1;
+        System.out.print("Secuencia de Números: ");
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(a + " ");
+            int siguiente = a + b;
+            a = b;
+            b = siguiente;
+        }
+
+        System.out.println();
+        */
+
+        /*
+        // Ejercicio 1: Juego del número aleatorio
+
+
+            Random random = new Random();
+            int aleatorio = random.nextInt(100) + 1;
+            int num, contador;
+
+            System.out.println("Bienvenido al juego del número aleatorio");
+            System.out.println("Tienes 10 intentos para adivinar un número entre 1 y 100\n");
+
+            for (contador = 1; contador <= 10; contador++) {
+                System.out.print("Intento " + contador + " - Introduce un número: ");
+                num = teclado.nextInt();
+
+                if (num < aleatorio) {
+                    System.out.println("El número es mayor.\n");
+                } else if (num > aleatorio) {
+                    System.out.println("El número es menor.\n");
+                } else {
+                    System.out.println("🎉 ¡Muy bien! El número es correcto.");
+                    return; // salir del método si acierta
+                }
+            }
+
+            System.out.println("Se acabaron los intentos. El número era: " + aleatorio);
+
+
+        // Ejercicio 2: Contar años bisiestos
+
+
+            int anyo, anyo_actual = 2024;
+            int contador2 = 0;
+
+            System.out.print("Introduce un año: ");
+            anyo = teclado.nextInt();
+
+            while (anyo <= anyo_actual) {
+                // Condición de año bisiesto
+                if (anyo % 4 == 0 && (anyo % 100 != 0 || anyo % 400 == 0)) {
+                    contador2++;
+                }
+                anyo++;
+            }
+
+            System.out.println("Hay " + contador2 + " años bisiestos hasta " + anyo_actual + ".");
+
+        */
+
+
+    }
+}
