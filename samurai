@@ -1,0 +1,62 @@
+package org.example;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Samurais {
+
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+        Random aleatorio = new Random();
+
+        String equipo1 ="";
+        String equipo2 ="";
+        int contador= 0;
+
+
+        int[] vector1 = new int[7];
+        int[] vector2 = new int[7];
+
+        System.out.println("Equipo 1-------------------------------:");
+        System.out.println("Introduce potencia de los samurais:");
+        equipo1 = teclado.nextLine();
+
+        String[] samurais1 = equipo1.split(" ");
+        System.out.println(Arrays.toString(samurais1));
+
+        for (int i =0;i< samurais1.length ;i++){
+
+            if (samurais1.length>7){
+                System.out.println("ERROR: No se puede tener poner mas de 7 samurais");
+                while (true){
+                    System.out.println("Introduce potencia de los samurais:");
+                    equipo1 = teclado.nextLine();
+                    break;
+                }
+
+            }
+            contador += Integer.parseInt(samurais1[i]);
+
+
+        }
+        if (contador>30){
+
+            System.out.println(contador);
+            System.out.println("ERROR: No se puede tener una potencia mayor que 30");
+            System.exit(1);
+
+        }
+
+        System.out.println(contador);
+
+
+
+        //int pot = teclado.nextInt();
+        //int ale1 = aleatorio.nextInt(100) + 1;
+
+
+
+
+    }
+}
