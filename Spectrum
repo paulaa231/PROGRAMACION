@@ -1,0 +1,93 @@
+import java.util.Scanner;
+
+
+
+public class Juego {
+    public static void main(String[] args) {
+
+                Scanner teclado = new Scanner(System.in);
+
+        int ancho, alto;
+
+        // Pedir ancho y alto (múltiplos de 8 y <= 48)
+        buclePedir:
+        do {
+            System.out.print("Introduce el ANCHO (múltiplo de 8 y <= 48): ");
+            ancho = teclado.nextInt();
+
+            System.out.print("Introduce el ALTO (múltiplo de 8 y <= 48): ");
+            alto = teclado.nextInt();
+
+            if (ancho % 8 != 0 || alto % 8 != 0 || ancho > 48 || alto > 48 || alto < 0 || ancho < 0) {
+                System.out.println(" ERROR: Ambos deben ser múltiplos de 8 y no mayores que 48.");
+                continue buclePedir;
+            }
+        } while (ancho % 8 != 0 || alto % 8 != 0 || ancho > 48 || alto > 48);
+
+        //  Leer imagen (solo letras entre A y O)
+        char imagen[][] = new char[alto][ancho];
+
+        for (int i = 0; i < alto; i++) {
+            String linea;
+            do {
+                System.out.print("Fila " + (i + 1) + ": ");
+                linea = teclado.nextLine();
+
+                // Compruebo que tiene la longitud correcta y solo A-O
+                if (!linea.matches("[A-O]{" + ancho + "}")) {
+                    System.out.println(" ERROR: debe tener " + ancho + " letras entre A y O.");
+                }
+            } while (!linea.matches("[A-O]{" + ancho + "}"));
+
+            imagen[i] = linea.toCharArray();  // Guardamos la fila válida
+        }
+
+        boolean compatible = true;
+
+        // Recorrer bloques de 8x8
+        for (int fila = 0; fila < alto; fila += 8) {
+            for (int col = 0; col < ancho; col += 8) {
+
+                char color1 = 0, color2 = 0;
+                boolean tercerColor = false;
+
+                // Uso la matriz 8x8
+                for (int i = 0; i < 8 && !tercerColor; i++) {
+                    for (int j = 0; j < 8 && !tercerColor; j++) {
+                        char actual = imagen[fila + i][col + j];
+
+                        if (color1 == 0) {
+                            color1 = actual;
+                        }
+                        else if (actual != color1 && color2 == 0) {
+                            color2 = actual;
+                        }
+                        else if (actual != color1 && actual != color2) {
+                            tercerColor = true;
+                            compatible = false;
+                        }
+                    }
+                }
+                if (!compatible) break;
+            }
+            if (!compatible) break;
+        }
+
+        // Resultado final
+        if (compatible) {
+            System.out.println(" Es compatible con un ZX Spectrum");
+        } else {
+            System.out.println(" No es compatible con un ZX Spectrum");
+        }
+
+        System.out.println("Pixeles completos:");
+        for (int i = 0; i < alto; i++) {
+            for (int j = 0; j < ancho; j++) {
+                System.out.print(imagen[i][j]);
+            }
+            System.out.println(); // salto de línea por fila
+        }
+
+        
+            }
+        }
