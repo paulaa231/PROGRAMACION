@@ -1,0 +1,40 @@
+package org.example;
+import java.sql.SQLOutput;
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+public class Olivas {
+    public static void main(String[] args) {
+
+        Scanner teclado = new Scanner(System.in);
+        int tamayo_ancho =0;
+        int tamayo_largo =0;
+        int [][] olivas = new int[6][4];
+        int [] vector1 = new int[4];
+
+
+        System.out.println("**** BIENVENIDO AL OLIVÓMETRO ****");
+        System.out.println("Introduce el tamaño de tu bancal...");
+
+        System.out.println("Ancho:");
+        tamayo_ancho = teclado.nextInt();
+        System.out.println("Largo:");
+        tamayo_largo = teclado.nextInt();
+
+        int  bancal = tamayo_largo * tamayo_ancho;
+
+        System.out.println("=========================");
+        System.out.println("MAPA tu bancal actual:");
+
+        for (int i=0;i < olivas.length ;i++){
+            for (int j = 0; j< olivas[i].length; j++) {
+
+                System.out.print("Fila " + i + ", Columna " + j + ": ");
+                //vector1 = teclado.();
+
+
+            }    System.out.println(Arrays.toString(olivas));
+            }
+    }
+    }
