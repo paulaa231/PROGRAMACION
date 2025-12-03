@@ -1,0 +1,27 @@
+package org.example;
+
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Entornos {
+
+    static void main() {
+
+        String nombre = "";
+        int gente = 0;
+        Scanner teclado = new Scanner(System.in);
+
+
+        System.out.println("Numero de gente que Tintin no conoce");
+        gente = teclado.nextInt();
+
+        for (int i = 0; i < gente; i++) {
+            System.out.println("Nombre: ");
+            nombre = teclado.next();
+            System.out.println("Hola soy " + nombre);
+
+        }
+        
+    }
+}
