@@ -1,0 +1,24 @@
+package org.example;
+
+import java.util.Scanner;
+
+public class Cubo {
+
+    static void main(){
+
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.println("Dime un numero...");
+        int numero = teclado.nextInt();
+        //validarNumero
+
+        int resultado = cubo(numero);
+        System.out.println(resultado);
+    }
+
+    public static int cubo(int num) {
+
+
+        return num*num*num;
+    }
+}
